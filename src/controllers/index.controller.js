@@ -210,6 +210,82 @@ const NuevoHistorialMedico = async (req, res) => {
     }
 }
 
+const Paciente = async (req, res) => {
+    const consulta = `select * from paciente`;
+    try {
+        const response = await pool.query(consulta);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const PacienteByID = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const consulta = `select * from paciente where dpi  = $1`;
+    try {
+        const response = await pool.query(consulta, [id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const NewPaciente = async (req, res) => {
+    const { dpi, nombre, direccion, telefono , altura, masa_corporal, peso, enfermedades_herencia } = req.body;
+    const consulta = `insert into paciente (dpi, nombre, direccion, telefono , altura, masa_corporal, peso, enfermedades_herencia) values ($1, $2, $3, $4, $5, $6, $7, $8)`;
+    try {
+        const response = await pool.query(consulta, [dpi, nombre, direccion, telefono , altura, masa_corporal, peso, enfermedades_herencia]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const Inventario = async (req, res) => {
+    const consulta = `select * from inventario`;
+    try {
+        const response = await pool.query(consulta);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const InventarioByID = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const consulta = `select * from inventario where id_centro_medico  = $1`;
+    try {
+        const response = await pool.query(consulta, [id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const nuevoProducto = async (req, res) => {
+    const { id_centro_medico, nombre_producto, cantidad_producto, capacidad_producto,fecha_vencimiento } = req.body;
+    const consulta = `insert into inventario (id_centro_medico, nombre_producto, cantidad_producto, capacidad_producto,fecha_vencimiento) values ($1, $2, $3, $4, $5)`;
+    try {
+        const response = await pool.query(consulta, [id_centro_medico, nombre_producto, cantidad_producto, capacidad_producto,fecha_vencimiento]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -226,5 +302,11 @@ module.exports = {
     HistorialMedico,
     HistorialMedicoByID,
     NuevoReporteMedico,
-    NuevoHistorialMedico
+    NuevoHistorialMedico,
+    Paciente,
+    PacienteByID,
+    NewPaciente,
+    Inventario,
+    InventarioByID,
+    nuevoProducto
 }

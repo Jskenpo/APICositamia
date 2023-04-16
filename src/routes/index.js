@@ -1,7 +1,8 @@
 const { Router } = require('express'); 
 const router = Router();
 const { obtenerTop10EnfermedadesFallecidos, 
-    agregarMedico, obtenerTop10MedicosMasPacientes, 
+    agregarMedico, 
+    obtenerTop10MedicosMasPacientes, 
     PacientesMasAsistencias, 
     SuministrosEscasos,
     HospitalesMasPacientes, 
@@ -11,7 +12,13 @@ const { obtenerTop10EnfermedadesFallecidos,
     HistorialMedico, 
     HistorialMedicoByID, 
     NuevoReporteMedico, 
-    NuevoHistorialMedico } = require('../controllers/index.controller');
+    NuevoHistorialMedico, 
+    Paciente, 
+    PacienteByID, 
+    NewPaciente, 
+    Inventario ,
+    InventarioByID, 
+    nuevoProducto} = require('../controllers/index.controller');
 
 //queries predefinidos para proyecto
 router.get('/Fallecidos', obtenerTop10EnfermedadesFallecidos);
@@ -22,10 +29,15 @@ router.get('/HospitalesMP', HospitalesMasPacientes);
 router.get('/SuministrosV', SuministrosVencidos);
 router.get('/ReporteM', ReporteMedico);
 router.get('/Historial', HistorialMedico);
+router.get('/Paciente', Paciente);
+router.get('/Inventario', Inventario);
+
 
 //usuario especifico 
 router.get('/ReporteM/:id', ReporteMedicoByID);
 router.get('/Historial/:id', HistorialMedicoByID);
+router.get('/Paciente/:id', PacienteByID);
+router.get('/Inventario/:id', InventarioByID);
 
 
 
@@ -33,6 +45,8 @@ router.get('/Historial/:id', HistorialMedicoByID);
 router.post('/queries', agregarMedico);
 router.post('/ReporteM', NuevoReporteMedico);
 router.post('/Historial', NuevoHistorialMedico);
+router.post('/Paciente', NewPaciente);
+router.post('/Inventario', nuevoProducto);
 
 
 module.exports = router;
