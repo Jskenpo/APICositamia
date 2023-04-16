@@ -18,7 +18,9 @@ const { obtenerTop10EnfermedadesFallecidos,
     NewPaciente, 
     Inventario ,
     InventarioByID, 
-    nuevoProducto} = require('../controllers/index.controller');
+    nuevoProducto, 
+    UpdateMedico, 
+    Medico} = require('../controllers/index.controller');
 
 //queries predefinidos para proyecto
 router.get('/Fallecidos', obtenerTop10EnfermedadesFallecidos);
@@ -31,6 +33,7 @@ router.get('/ReporteM', ReporteMedico);
 router.get('/Historial', HistorialMedico);
 router.get('/Paciente', Paciente);
 router.get('/Inventario', Inventario);
+router.get('/Medico', Medico);
 
 
 //usuario especifico 
@@ -42,11 +45,14 @@ router.get('/Inventario/:id', InventarioByID);
 
 
 //queries para agregar
-router.post('/queries', agregarMedico);
+router.post('/Medico', agregarMedico);
 router.post('/ReporteM', NuevoReporteMedico);
 router.post('/Historial', NuevoHistorialMedico);
 router.post('/Paciente', NewPaciente);
 router.post('/Inventario', nuevoProducto);
+
+//update
+router.put('/Medico/:id', UpdateMedico);
 
 
 module.exports = router;

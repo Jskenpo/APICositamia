@@ -280,6 +280,31 @@ const nuevoProducto = async (req, res) => {
     }
 }
 
+const Medico = async (req, res) => {
+    const consulta = `select * from medico`;
+    try {
+        const response = await pool.query(consulta);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
+const UpdateMedico = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const {id_centro_medico } = req.body;
+    const consulta = `update medico set id_centro_medico = $1 where num_colegiado = $2`;
+    try {
+        const response = await pool.query(consulta, [id_centro_medico, id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 
 
 
@@ -308,5 +333,7 @@ module.exports = {
     NewPaciente,
     Inventario,
     InventarioByID,
-    nuevoProducto
+    nuevoProducto,
+    UpdateMedico,
+    Medico
 }
