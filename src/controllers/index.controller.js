@@ -140,6 +140,55 @@ const SuministrosVencidos = async (req, res) => {
     }
 }
 
+const ReporteMedico = async (req, res) => {
+    const consulta = `select * from reporte_medico`;
+    try {
+        const response = await pool.query(consulta);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const ReporteMedicoByID = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const consulta = `select * from reporte_medico where id_reporte = $1`;
+    try {
+        const response = await pool.query(consulta, [id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const HistorialMedico = async (req, res) => {
+    const consulta = `select * from historial`;
+    try {
+        const response = await pool.query(consulta);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const HistorialMedicoByID = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const consulta = `select * from historial where id_reporte_medico = $1`;
+    try {
+        const response = await pool.query(consulta, [id]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+
+
+
 
 module.exports = {
     obtenerTop10EnfermedadesFallecidos,
@@ -148,5 +197,9 @@ module.exports = {
     PacientesMasAsistencias,
     SuministrosEscasos,
     HospitalesMasPacientes,
-    SuministrosVencidos
+    SuministrosVencidos,
+    ReporteMedico,
+    ReporteMedicoByID,
+    HistorialMedico,
+    HistorialMedicoByID,
 }
