@@ -9,7 +9,9 @@ const { obtenerTop10EnfermedadesFallecidos,
     ReporteMedico, 
     ReporteMedicoByID, 
     HistorialMedico, 
-    HistorialMedicoByID } = require('../controllers/index.controller');
+    HistorialMedicoByID, 
+    NuevoReporteMedico, 
+    NuevoHistorialMedico } = require('../controllers/index.controller');
 
 //queries predefinidos para proyecto
 router.get('/Fallecidos', obtenerTop10EnfermedadesFallecidos);
@@ -29,6 +31,8 @@ router.get('/Historial/:id', HistorialMedicoByID);
 
 //queries para agregar
 router.post('/queries', agregarMedico);
+router.post('/ReporteM', NuevoReporteMedico);
+router.post('/Historial', NuevoHistorialMedico);
 
 
 module.exports = router;

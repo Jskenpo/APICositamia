@@ -186,6 +186,29 @@ const HistorialMedicoByID = async (req, res) => {
     }
 }
 
+const NuevoReporteMedico = async (req, res) => {
+    const { id_reporte, id_paciente, id_medico, enfermedad_tratada, medicamento_suministrado, examenes_realizados, id_centro_medico } = req.body;
+    const consulta = `insert into reporte_medico (id_reporte, id_paciente, id_medico, enfermedad_tratada, medicamento_suministrado, examenes_realizados, id_centro_medico) values ($1, $2, $3, $4, $5, $6, $7)`;
+    try {
+        const response = await pool.query(consulta, [id_reporte, id_paciente, id_medico, enfermedad_tratada, medicamento_suministrado, examenes_realizados, id_centro_medico]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const NuevoHistorialMedico = async (req, res) => {
+    const { id_reporte_medico, fecha, hora, seguimiento, status} = req.body;
+    const consulta = `insert into historial (id_reporte_medico, fecha, hora, seguimiento, status) values ($1, $2, $3, $4, $5)`;
+    try {
+        const response = await pool.query(consulta, [id_reporte_medico, fecha, hora, seguimiento, status]);
+        console.log(response.rows);
+        res.status(200).json(response.rows);
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 
 
@@ -202,4 +225,6 @@ module.exports = {
     ReporteMedicoByID,
     HistorialMedico,
     HistorialMedicoByID,
+    NuevoReporteMedico,
+    NuevoHistorialMedico
 }
