@@ -71,72 +71,7 @@ Este proyecto es una réplica de la página https://www.nike.com/es/
     
     
    
-   ## Ejemplo de componente SwiperJS
-   <br>
-   <br>
-   El ejemplo esta basado en un componente utilizado en el proyecto, y adicionalmente se tienen que importar las lisbrerías correspondientes, las cuales puedes revisar en la documentación indicada anteriormente 
-    <br>
-    <br>
-
-
-        <div id='slider'>
-
-            <Swiper
-                //Elementos por carrousel (vista)
-                slidesPerView={4}
-                //espacio entre elementos
-                spaceBetween={30}
-                //centrado
-                centeredSlides={true}
-                //que el carrousel sea infinito
-                loop={true}
-                //Botones y paginación de carrousel
-                navigation={true}
-                pagination={{
-                  clickable: true,
-                  type: "fraction"
-                }}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
-            >
-                //Elementos del carrousel
-                <SwiperSlide>
-                    <img src={z1}></img>
-                    <div class='slide-text'><p>Sujetadores deportivos</p></div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={z2}></img>
-                    <div class='slide-text'><p>Zapatillas para moverte como quieras</p></div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={z3}></img>
-                    <div class='slide-text'><p>Ropa de danza</p></div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={z4}></img>
-                    <div class='slide-text'><p>Diseño europeo</p></div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={z5}></img>
-                    <div class='slide-text'><p>Fleence</p></div>
-                </SwiperSlide>
-
-
-            </Swiper>
-
-            <div id='LB1' class='barrita'></div>
-            <div id='LB2' class='barrita'></div>
-            
-
-        </div>
-
-        
-
-    );
-
-
-
-
+   
 ## Utiliza el proyecto
 1. Clona este repositorio con el siguiente enlace : 'https://github.com/Jskenpo/PROYECTO1-STW.git'
     <br>
